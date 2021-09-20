@@ -21,3 +21,5 @@ SELECT name FROM albums WHERE release_date BETWEEN 1990 and 1999;
 SELECT name FROM albums WHERE sales < 20.0;
 -- All the albums with a genre of "Rock". Why do these query results not include albums with a genre of "Hard rock" or "Progressive rock"? Sgt. Pepper's Lonely Hearts Club Band, 1, Abbey Road, Born in the U.S.A, Supernatural / Beacause "ROCK" is a specific string, this query isn't looking for all albums containing the string "ROCK". 
 SELECT name FROM albums WHERE genre = 'ROCK';
+-- To show all Rock genres including "Hard rock" and "Progressive rock": 
+SELECT name FROM albums WHERE genre LIKE '%ROCK%';
