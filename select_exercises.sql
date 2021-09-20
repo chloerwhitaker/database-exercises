@@ -1,7 +1,8 @@
 -- Use the albums_db database
 USE albums_db;
 -- Explore the structure of the albums table
--- How many rows are in the albums table: 31 (Listed in Table Information)
+-- How many rows are in the albums table: 31 (Also listed in Table Information when you click on albums_db under 'TABLES' to the left)
+SELECT * FROM albums;
 -- How many unique artist names are in the albums table? 23 (Using Distinct)
 SELECT DISTINCT artist FROM albums;
 -- What is the primary key for the albums table? id
