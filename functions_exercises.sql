@@ -21,6 +21,4 @@ WHERE to_date > curdate(); -- To make it current
 select LOWER(CONCAT(SUBSTR(first_name, 1, 1), SUBSTR(last_name, 1, 4),"_", SUBSTR(hire_date, 6, 2), SUBSTR(hire_date, 3, 2))) 
 AS username,first_name, last_name, birth_date
 FROM employees;
-
-
-()
+-- try breaking it down to more lines in the future to be more neat
