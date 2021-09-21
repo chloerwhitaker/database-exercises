@@ -11,3 +11,8 @@ SELECT first_name, last_name, emp_no FROM employees WHERE hire_date LIKE '199%-%
 -- Pranay Narwekar, Marjo Farrow, Ennio Karcich, Dines Lubachevsky, Ipke Fontan
 -- OFFSET = number of results to skip / LIMIT = The number of results to show / Page number = each page has a limit of 5, so the 10th page would be shown by skipping 45 results, before showing the next 5. 
 SELECT first_name, last_name, emp_no FROM employees WHERE hire_date LIKE '199%-%-%' AND birth_date LIKE '%-12-25' ORDER BY hire_date LIMIT 5 OFFSET 45;
+-- Offset = (Page-1) * Limit 
+-- O = (N-1)*5
+-- O = (10-1)*5 
+-- Offset = 9*5 = 45
+-- Offset = 45
