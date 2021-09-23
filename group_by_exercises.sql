@@ -45,16 +45,12 @@ GROUP BY first_name, gender;
 
 -- 8.Using your query that generates a username for all of the employees, generate a count employees for each unique username. Are there any duplicate usernames? BONUS: How many duplicate usernames are there?
 
-select LOWER(CONCAT(SUBSTR(first_name, 1, 1), SUBSTR(last_name, 1, 4),"_", SUBSTR(hire_date, 6, 2), SUBSTR(hire_date, 3, 2))) 
-AS username,first_name, last_name, birth_date, COUNT(*)
+SELECT LOWER(CONCAT(SUBSTR(first_name, 1, 1), SUBSTR(last_name, 1, 4),"_", SUBSTR(hire_date, 6, 2), SUBSTR(hire_date, 3, 2))) 
+AS username, COUNT(*) AS duplicates 
 FROM employees
-GROUP BY username,first_name, last_name, birth_date;
+GROUP BY username
+ORDER BY duplicates DESC;
 
-select LOWER(CONCAT(SUBSTR(first_name, 1, 1), SUBSTR(last_name, 1, 4),"_", SUBSTR(hire_date, 6, 2), SUBSTR(hire_date, 3, 2))) 
-AS username,first_name, last_name, birth_date, COUNT(*)
-FROM employees
-GROUP BY username,first_name, last_name, birth_date
-HAVING COUNT(*) > 1;
 
 -- 9.  More practice with aggregate functions:
 -- Find the historic average salary for all employees. Now determine the current average salary.
