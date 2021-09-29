@@ -47,6 +47,6 @@ SELECT
 FROM departments AS d
 JOIN dept_emp AS de USING(dept_no)
 JOIN salaries AS s USING(emp_no)
-WHERE de.to_date < CURDATE()
+WHERE de.to_date < CURDATE() -- added alias to joins so to_date would not be ambiguous 
 GROUP BY dept_group
 ORDER BY dept_group;
