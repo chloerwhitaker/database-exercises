@@ -32,3 +32,19 @@ SUM(CASE WHEN birth_date LIKE '195%' THEN 1 ELSE 0 END) AS '1950s Birthdays', --
 SUM(CASE WHEN birth_date LIKE '196%' THEN 1 ELSE 0 END) AS '1960s Birthdays' -- 117138
 FROM employees;
 
+-- BONUS 
+-- What is the current average salary for each of the following department groups: R&D, Sales & Marketing, Prod & QM, Finance & HR, Customer Service?
+
+
+SELECT 
+	CASE
+	WHEN dept_name IN ('Finance', 'Human Resources') THEN 'Finance & HR'
+	WHEN dept_name IN ('Sales', 'Marketing') THEN 'Sales & Marketing'
+	WHEN dept_name IN ('Production', 'Quality Management') THEN 'Prod & QM'
+	WHEN dept_name IN ('Research', 'Development') THEN 'R&D'
+	ELSE dept_name END dept_group, AVG(salary) AS avg_salary
+FROM departments AS d
+JOIN dept_emp AS de USING(dept_no)
+JOIN salaries AS s USING(emp_no)
+WHERE de.to_date < CURDATE()
+GROUP BY dept_group;
