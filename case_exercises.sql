@@ -38,13 +38,15 @@ FROM employees;
 
 SELECT 
 	CASE
-	WHEN dept_name IN ('Finance', 'Human Resources') THEN 'Finance & HR'
+	WHEN dept_name IN ('Research', 'Development') THEN 'R&D'
 	WHEN dept_name IN ('Sales', 'Marketing') THEN 'Sales & Marketing'
 	WHEN dept_name IN ('Production', 'Quality Management') THEN 'Prod & QM'
-	WHEN dept_name IN ('Research', 'Development') THEN 'R&D'
-	ELSE dept_name END dept_group, AVG(salary) AS avg_salary
+	WHEN dept_name IN ('Finance', 'Human Resources') THEN 'Finance & HR'
+	ELSE dept_name 
+	END dept_group, AVG(salary) AS avg_salary
 FROM departments AS d
 JOIN dept_emp AS de USING(dept_no)
 JOIN salaries AS s USING(emp_no)
 WHERE de.to_date < CURDATE()
-GROUP BY dept_group;
+GROUP BY dept_group
+ORDER BY dept_group;
