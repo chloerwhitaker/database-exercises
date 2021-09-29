@@ -6,21 +6,14 @@ FROM employees
 JOIN dept_emp USING(emp_no);
 
 -- 2. Write a query that returns all employee names (previous and current), and a new column 'alpha_group' that returns 'A-H', 'I-Q', or 'R-Z' depending on the first letter of their last name.
-SELECT first_name, last_name,
-	CASE
-	WHEN last_name LIKE 'A%' OR 'H%' THEN 'A-H'
-    WHEN last_name LIKE 'I%' OR 'Q%' THEN 'I-Q'
-    ELSE 'R-Z'
-    END AS alpha_group
-FROM employees; -- Couldn't get to work with LIKE... Defaults to ELSE... so tried BETWEEN 
 
-SELECT first_name, last_name,
+SELECT first_name, last_name, -- Don't forget comas
 	CASE
 	WHEN last_name BETWEEN 'A' AND 'H' THEN 'A-H'
     WHEN last_name BETWEEN 'I' AND 'Q' THEN 'I-Q'
     ELSE 'R-Z'
     END AS alpha_group
-FROM employees; -- WORKS! 
+FROM employees; 
 
 -- 3. How many employees (current or previous) were born in each decade?
 SELECT birth_date 
